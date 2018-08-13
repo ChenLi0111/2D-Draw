@@ -1,4 +1,4 @@
-# 2-D Draw Model-View-Controller in Java
+# 2-D Draw
 
 ## Description:<br />
 This drawing lets users draw on the screen using a mouse. <br />
@@ -23,3 +23,6 @@ macOS High Sierra version 10.13.4<br />
 ## Please Note:<br />
 This application needs vecmath.jar to get started.<br />
 The minimum size of this application is 440 x 330.<br />
+
+## Screenshot
+![Alt text](https://github.com/yhggf45/2D-Draw/raw/master/screenshot.png)
