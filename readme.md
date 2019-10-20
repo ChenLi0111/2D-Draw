@@ -10,7 +10,7 @@ Customizable color palette, as in you can wholly or partially customize color bu
 Ability to play animations both forward and backward.<br />
 
 ## To start:<br />
-Type "./gradlew run" under a2 folder to run on macOS.<br />
+Use "./gradlew run" to run the application on macOS.<br />
 Use mouse to draw on the canvas.<br />
 Use the play button to cause the strokes to be drawn, from the current slider position to the end, as they were drawn on the canvas.<br />
 Use the start button to rewind to the start of the animation.<br />
