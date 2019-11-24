@@ -32,7 +32,7 @@ public class Model extends Observable implements Serializable {
     private javax.swing.Timer timer = new javax.swing.Timer(50, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (slider_pre < 100 && play == true && play_back == false) {
+            if (slider_pre < 100 && play && !play_back) {
                 //System.out.println(Integer.toString(slider_pre));
                 slider_pre = slider_pre + 1;
                 set_play_prentage(slider_pre);
@@ -40,12 +40,12 @@ public class Model extends Observable implements Serializable {
                 need_change_slider = true;
                 //System.out.println(Integer.toString(slider_pre));
             }
-            if (slider_pre == 100 && play_back == false) {
+            if (slider_pre == 100 && !play_back) {
                 play = false;
                 timer.stop();
             }
 
-            if (play_back == true) {
+            if (play_back) {
                 //System.out.println(Integer.toString(slider_pre));
                 slider_pre = slider_pre - 1;
                 set_play_prentage(slider_pre);
@@ -53,7 +53,7 @@ public class Model extends Observable implements Serializable {
                 need_change_slider = true;
                 //System.out.println(Integer.toString(slider_pre));
             }
-            if (slider_pre == 0 && play_back == true) {
+            if (slider_pre == 0 && play_back) {
                 play_back = false;
                 timer.stop();
             }
@@ -65,14 +65,14 @@ public class Model extends Observable implements Serializable {
     }
 
     public void set_play() {
-        if (shape_collection.size() == 0) {return;}
+        if (shape_collection.size() == 0) { return; }
         play = true;
         with_timer = true;
         timer.start();
     }
 
     public void set_end() {
-        if (shape_collection.size() == 0) {return;}
+        if (shape_collection.size() == 0) { return; }
         set_play_prentage(100);
         need_change_slider = true;
         play_back = false;
@@ -134,7 +134,7 @@ public class Model extends Observable implements Serializable {
     }
 
     public void update_collection() {
-        if (slider_pre == 100) {return;}
+        if (slider_pre == 100) { return; }
 
         int point_count = 0;
         for (Shape ss: shape_collection) {
@@ -154,9 +154,9 @@ public class Model extends Observable implements Serializable {
                 //System.out.println("add : " + Integer.toString(shape_collection.get(i).get_points().size()));
             }
         }
-        if (i == 0) {return;}
-        keep_track -= shape_collection.get(i-1).get_points().size();
-        i = i - 1;
+        if (i == 0) { return; }
+        keep_track -= shape_collection.get(i - 1).get_points().size();
+        i--;
 
         //System.out.println("total shapes: " + Integer.toString(shape_collection.size()));
         print_shape_collection.clear();

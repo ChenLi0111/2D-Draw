@@ -32,35 +32,15 @@ class Shape implements Serializable {
         return points;
     }
 
-    public int npoints() {
-        return points.size();
-    }
-
     // shape is polyline or polygon
-    Boolean isClosed = false;
-
-    public Boolean getIsClosed() {
-        return isClosed;
-    }
-
-    public void setIsClosed(Boolean isClosed) {
-        this.isClosed = isClosed;
-    }
+    private Boolean isClosed = false;
 
     // if polygon is filled or not
-    Boolean isFilled = false;
-
-    public Boolean getIsFilled() {
-        return isFilled;
-    }
-
-    public void setIsFilled(Boolean isFilled) {
-        this.isFilled = isFilled;
-    }
+    private Boolean isFilled = false;
 
     // drawing attributes
-    Color colour = Color.red;
-    float strokeThickness = 3.0f;
+    private Color colour = Color.red;
+    private float strokeThickness = 3.0f;
 
     public void set_thickness(float f) {
         strokeThickness = f;
@@ -78,31 +58,23 @@ class Shape implements Serializable {
         return strokeThickness;
     }
 
-    public void setStrokeThickness(float strokeThickness) {
-        this.strokeThickness = strokeThickness;
-    }
-
     // shape's transform
 
-    float scale = 1.0f;
-
-    public float getScale(){
-        return scale;
-    }
+    private float scale = 1.0f;
 
     public void setScale(float scale){
         this.scale = scale;
     }
 
     // some optimization to cache points for drawing
-    Boolean pointsChanged = false; // dirty bit
-    int[] xpoints, ypoints;
-    int npoints = 0;
+    private Boolean pointsChanged = false; // dirty bit
+    private int[] xpoints, ypoints;
+    private int npoints = 0;
 
     void cachePointsArray() {
         xpoints = new int[points.size()];
         ypoints = new int[points.size()];
-        for (int i=0; i < points.size(); i++) {
+        for (int i = 0; i < points.size(); i++) {
             xpoints[i] = (int)points.get(i).x;
             ypoints[i] = (int)points.get(i).y;
         }
