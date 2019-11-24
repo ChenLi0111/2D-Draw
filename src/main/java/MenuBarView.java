@@ -14,7 +14,7 @@ public class MenuBarView extends JPanel implements Observer {
     private JMenu menu_file = new JMenu("File");
     private JMenuBar menubar_file = new JMenuBar();
 
-    private void add_menu_file () {
+    private void add_menu_file() {
         for (String s: new String[] {"Save", "Load", "New", "Exit" }) {
             // add this menu item to the menu
             JMenuItem mi = new JMenuItem(s);
@@ -25,19 +25,19 @@ public class MenuBarView extends JPanel implements Observer {
                     JMenuItem mi = (JMenuItem)e.getSource();
                     if (mi.getText() == "Exit") {
                         if (model.get_shape_collection().size() > 0) {
-                            if (model.get_has_saved() != true) {
+                            if (!model.get_has_saved()) {
                                 call_save();
                             }
                         }
                         System.exit(0);
                     } else if (mi.getText() == "New") {
-                        if (model.get_has_saved() != true) {
+                        if (!model.get_has_saved()) {
                             call_save();
                         }
                         call_new();
                     } else if (mi.getText() == "Load") {
                         if (model.get_shape_collection().size() > 0) {
-                            if (model.get_has_saved() != true) {
+                            if (!model.get_has_saved()) {
                                 call_save();
                             }
                         }
@@ -58,7 +58,7 @@ public class MenuBarView extends JPanel implements Observer {
         // Hook up this observer so that it will be notified when the model changes.
         this.model = model;
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        add_menu_file ();
+        add_menu_file();
 
         this.add(menubar_file);
     }

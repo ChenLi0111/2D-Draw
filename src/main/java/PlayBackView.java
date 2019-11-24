@@ -96,11 +96,11 @@ public class PlayBackView extends JPanel implements Observer {
             slider.setMajorTickSpacing((int) space);
         }
 
-        if (model.get_need_change_slider() == true && model.get_with_timer() == true) {
+        if (model.get_need_change_slider() && model.get_with_timer()) {
             //System.out.println("first if");
             slider.setValue(model.get_slider_pre());
             model.set_need_change_slider(false);
-        } else if (model.get_need_change_slider() == true) {
+        } else if (model.get_need_change_slider()) {
             //System.out.println("second if");
             slider.setValue(max_stroke);
             model.set_need_change_slider(false);
